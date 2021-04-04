@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('service')->middleware('auth')->group(function() {
+    Route::get('all' ,  [App\Http\Controllers\ExpertController::class, 'all']);
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
