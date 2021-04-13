@@ -67,8 +67,6 @@
             </div>
 <div></div>
 <div></div>
-<div></div>
-
 
 
 
@@ -184,7 +182,7 @@
 
 
 <!--Experts-->
-<div class="grid grid-cols-3 gap-2 md:place-content-stretch bg-gray-100 max-h-100">
+<div class="grid grid-cols-1 gap-2 md:place-content-stretch bg-gray-100 max-h-100">
 
 <div class="max-w-sm w-full lg:max-w-full lg:flex">
   <div class="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center items-center overflow-hidden"><img class="h-48 lg:h-auto lg:w-48" src="/images/logo.png"/>
