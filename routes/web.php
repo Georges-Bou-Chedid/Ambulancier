@@ -14,9 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 
+Route::get('/allrequests', [App\Http\Controllers\AmbulanceController::class, 'all'])->middleware('auth');
 
-Route::get('/allrequests', function () {
-    return view('welcome');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/create', [App\Http\Controllers\AmbulanceController::class, 'create'])->middleware('auth');
+Route::post('/create', [App\Http\Controllers\AmbulanceController::class, 'store'])->middleware('auth');
+
+
+Route::get('/edit/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'edit'])->middleware('auth');
+Route::post('/edit/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'update'])->middleware('auth');
+
+Route::get('/archive', [App\Http\Controllers\ArchivedController::class, 'all'])->middleware('auth');
+Route::post('/archive/{Ambulance}', [App\Http\Controllers\ArchivedController::class, 'archive'])->middleware('auth');
+Route::delete('/archive/{Archived}', [App\Http\Controllers\ArchivedController::class, 'delete'])->middleware('auth');
 
 require __DIR__.'/auth.php';
