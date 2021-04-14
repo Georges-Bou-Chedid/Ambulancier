@@ -14,30 +14,16 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
-    <title>Tasks</title>
+    <title>Ambulancier</title>
   </head>
 
-  <body class="text-gray-800 antialiased">
-    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 ">
-      <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
-        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-        
-          <a class="text-2xl font-bold leading-relaxed inline-block mr-10 ml-10 py-2 whitespace-nowrap uppercase text-white" href="/">Tasks</a><button class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none" type="button" onclick="toggleNavbar('example-collapse-navbar')">
-            <i class="text-white fas fa-bars"></i>
-          </button>
-        </div>
-        @if (Route::has('login'))
-        <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden" id="example-collapse-navbar">
-        @auth
-          <ul class="flex flex-col lg:flex-row list-none mr-auto">
-            <li class="flex items-center">
-              <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-3 py-4 lg:py-2 flex items-center text-sm uppercase font-bold" href=""><i class="lg:text-gray-300 text-gray-500 far fa-file-alt text-lg leading-lg mr-2"></i>
-                Statistics</a>
-            </li>
-          </ul>
-
-               <!-- Settings Dropdown -->
-               <div class="hidden sm:flex items-center">
+  <body class="bg-gray-200">
+  
+    <nav class="flex items-center justify-between flex-wrap bg-red-600 p-6">
+  <div class="flex items-center flex-shrink-0 text-white mr-6">
+    <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+    <span class="font-semibold text-xl tracking-tight">204</span>
+  </div>
                 <x-dropdown align="right" width="48">
                     <x-slot name="trigger">
                         <button class="flex items-center text-lg font-medium text-white hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
@@ -64,49 +50,8 @@
                         </form>
                     </x-slot>
                 </x-dropdown>
-            </div>
-
-          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-       
-          <li class="flex items-center">
-              <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-5 py-4 lg:py-2 flex items-center text-sm uppercase font-bold" href="/">Home<span class="lg:hidden inline-block ml-2"></span></a>
-            </li>
-           
-          </ul>
-          @else
-          <ul class="flex flex-col lg:flex-row list-none lg:ml-auto">
-            <li class="flex items-center">
-              <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-5 py-4 lg:py-2 flex items-center text-sm uppercase font-bold" href="/">Home<span class="lg:hidden inline-block ml-2"></span></a>
-            </li>
-            <li class="flex items-center">
-              <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-5 py-4 lg:py-2 flex items-center text-sm uppercase font-bold" href="{{ route('login') }}">Login<span class="lg:hidden inline-block ml-2"></span></a>
-            </li>
-            @if (Route::has('register'))
-            <li class="flex items-center">
-              <a class="lg:text-white lg:hover:text-gray-300 text-gray-800 px-5 py-4 lg:py-2 flex items-center text-sm uppercase font-bold" href="{{ route('register') }}">Sign Up<span class="lg:hidden inline-block ml-2"></span></a>
-            </li>
-            @endif
-          </ul>
-          @endauth
-      <div class="relative group">
-          <button
-               id="navAction"
-               class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out"
-              >
-               Services
-          </button>
-              <div class="absolute z-20 hidden bg-grey-200 right-0 w-full mt-1 origin-top-right rounded-md shadow-lg md:w-48 group-hover:block">
-          
-              <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-green-400">
-            <a class="block px-4 py-2 mt-2 text-sm text-green-600 font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-white-200 md:mt-0 hover:text-white-900 focus:text-white-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="/service/all">All Services</a>
-            <a class="block px-4 py-2 mt-2 text-sm text-green-600 font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-white-200 md:mt-0 hover:text-white-900 focus:text-white-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="#">By Filters</a>
-            </div>
-         </div>
-      </div>  
-    </div>
-  </div>
-      @endif
-    </nav>
+      <a href="/allrequests" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">Home</a>
+</nav>
    
    <main>
    @yield('content')
