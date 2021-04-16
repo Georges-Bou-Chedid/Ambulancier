@@ -13,7 +13,7 @@ class ArchivedController extends Controller
 {
     public function all()
     {
-        $archived = Archived::all();
+        $archived = Archived::orderBy('updated_at', 'asc')->get();;
 
         if (User::ADMIN == auth()->user()->role) {
             return view('AdminArchived', ['archived' => $archived]);
@@ -31,9 +31,9 @@ class ArchivedController extends Controller
         $archived->ambname = $ambulance->ambname;
         $archived->problem = $ambulance->problem;
         $archived->status = $ambulance->status;
-        
+        $archived->KM = $ambulance->KM;
+        $archived->rebhan = $ambulance->rebhan;
         $archived->Description = $ambulance->Description;
-        $archived->duedate = $ambulance->duedate;
         $archived->created_at = $ambulance->created_at;
         $archived->updated_at = NOW();
 

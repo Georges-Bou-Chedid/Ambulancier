@@ -17,6 +17,8 @@ class CreateAmbulancesTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('ambname')->nullable();
+            $table->string('rebhan')->nullable();
+            $table->integer('KM')->nullable();
             $table->string('problem')->nullable();
             $table->string('status')->nullable();
             $table->string('Description')->nullable();

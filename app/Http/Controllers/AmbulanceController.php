@@ -12,7 +12,7 @@ class AmbulanceController extends Controller
 {
     public function all(){
         $users = User::all();
-        $ambulance = Ambulance::all();
+        $ambulance = Ambulance::orderBy('duedate', 'asc')->get();
         if(auth()->user()->role == User::ADMIN){
             return view('Admin' , ['users' => $users , 'ambulance' => $ambulance]);
         }
@@ -20,7 +20,8 @@ class AmbulanceController extends Controller
     }
 
     public function create(){
-        return view ('createambulance');
+        $users = User::all();
+        return view ('createambulance' , ['users' => $users]);
     }
 
     public function store(Request $request){
@@ -30,7 +31,8 @@ class AmbulanceController extends Controller
         $ambulance->ambname = $request->ambname;
         $ambulance->problem = $request->problem;
         $ambulance->status = $request->status;
-        
+        $ambulance->KM = $request->KM;
+        $ambulance->rebhan = $request->rebhan;
         $ambulance->Description = $request->Description;
         $ambulance->duedate = $request->date;
         $ambulance->created_at = NOW();
@@ -42,18 +44,23 @@ class AmbulanceController extends Controller
 
 
     public function edit($id){
+        $users = User::all();
         $ambulance = Ambulance::find($id);
-        return view ('editambulance' , ['ambulance' => $ambulance]);
+        return view ('editambulance' , ['ambulance' => $ambulance , 'users' => $users]);
     }
 
     public function update(Request $request , $id){
         $ambulance = Ambulance::find($id);
 
         $ambulance->name = $request->name;
+        if($request->name == "--Select--"){
+            $ambulance->name = 'Not Specified';
+        }
         $ambulance->ambname = $request->ambname;
         $ambulance->problem = $request->problem;
         $ambulance->status = $request->status;
-        
+        $ambulance->KM = $request->KM;
+        $ambulance->rebhan = $request->rebhan;
         $ambulance->Description = $request->Description;
         $ambulance->duedate = $request->date;
 
