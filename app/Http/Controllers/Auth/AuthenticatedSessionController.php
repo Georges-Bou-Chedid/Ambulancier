@@ -7,6 +7,8 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Appelet;
+use App\Models\Term;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,7 +19,12 @@ class AuthenticatedSessionController extends Controller
      */
     public function create()
     {
-        return view('auth.login');
+        $appelets = Appelet::where('id' , 1)->first();
+        if(!$appelets){
+            $appelets = new Appelet();
+            $appelets->save();
+        }
+        return view('auth.login' , ['appelets' => $appelets]);
     }
 
     /**
@@ -27,6 +34,15 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request)
     {
+        $term = Term::where('id' , 1)->first();
+        if(!$term){
+            $term = new Term();
+            $term->save();
+        }
+        $term->term = NULL;
+        $term->save();
+
+
         $request->authenticate();
 
         $request->session()->regenerate();

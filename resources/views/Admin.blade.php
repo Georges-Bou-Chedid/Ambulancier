@@ -1,10 +1,14 @@
 @extends('layouts.auth')
 
 @section('content')
- 
-   <!-- This is an example component -->
-<div class="flex items-center px-4">
-    <div class='overflow-x-auto w-full'>
+
+<div class="text-center">
+	<form method="GET" action="/appelet">
+  <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+  Go To Appelet
+    </button>
+</form> 
+</div>
 
 	<div class="text-center">
 	<form method="GET" action="/create">
@@ -14,9 +18,54 @@
 </form> 
 </div>
 
+<div class="mt-4 ml-12 text-left">
+   
+    <form action="/search" method="POST" role="search">
+    {{ csrf_field() }}
+    <div class="input-group">
+        <input type="text" class="h-8 w-48 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"  name="term"
+            placeholder="Search anything...""> 
+
+            @if(isset($details))
+
+            <div class="ml-2 mt-6 h-12">
+                 <a  href="{{ url()->previous() }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+                 Back
+                </a>
+             </div>
+
+            @else
+            <span class="input-group-btn">
+            <button type="submit" class="btn btn-default">
+                <span class="glyphicon glyphicon-search"> <i class="fa fa-search text-gray-600 z-20 hover:text-gray-500"></i></span>
+            </button>
+        </span>
+        @endif
+
+        <span>
+        @if(session('message'))
+        <div class="alert">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('message')}}
+        </div>
+        @endif
+        </span>
+
+
+    </div>
+</form>
+</div>
+
+ 
+   <!-- This is an example component -->
+<div class="flex items-center px-4">
+    <div class='overflow-x-auto w-full'>
+
+   
+
         <!-- Table -->
 		
-        <table class='mt-6 mx-auto max-w-8xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+        <table class='table-auto mt-4 mx-auto max-w-6xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
             <thead class="bg-gray-50">
                 <tr class="text-gray-600 text-left">
                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
@@ -57,6 +106,7 @@
             </thead>
 			
             <tbody class="divide-y divide-gray-200">
+               
 			@foreach($ambulance as $ambulances)
                 <tr>
                     <td class="px-6 py-4 text-center">

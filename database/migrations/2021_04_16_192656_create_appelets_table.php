@@ -15,14 +15,15 @@ class CreateAppeletsTable extends Migration
     {
         Schema::create('appelets', function (Blueprint $table) {
             $table->id();
-            $table->integer('1st')->nullable();
-            $table->integer('2nd')->nullable();
-            $table->integer('3rd')->nullable();
-            $table->integer('4th')->nullable();
-            $table->integer('1stadv')->nullable();
-            $table->integer('2ndadv')->nullable();
-            $table->integer('1stmission')->nullable();
-            $table->integer('2stmission')->nullable();
+            $table->string('first')->nullable();
+            $table->string('second')->nullable();
+            $table->string('third')->nullable();
+            $table->string('fourth')->nullable();
+            $table->string('firstadv')->nullable();
+            $table->string('secondadv')->nullable();
+            $table->string('firstmission')->nullable();
+            $table->string('secondmission')->nullable();
+            $table->string('IDselected')->nullable();
             $table->timestamps();
         });
     }

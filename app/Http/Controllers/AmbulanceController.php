@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Ambulance;
 use App\Models\User;
 use Auth;
+use Illuminate\Support\Facades\Input;
+use App\Models\Term;
 
 
 class AmbulanceController extends Controller
@@ -68,4 +70,24 @@ class AmbulanceController extends Controller
 
         return redirect('/');
     }
+
+    public function search(Request $request){
+
+        $validated = $request->validate([
+            'term' => 'required',
+        ]);
+
+        $t = $request->input('term');
+        $ambulance = Ambulance::where('name' , 'like' , '%'.$t.'%')->orWhere('ambname' , 'like' , '%'.$t.'%')->get();
+
+        if (count($ambulance) > 0) {
+            if (User::ADMIN == auth()->user()->role) {
+                return view('Admin', ['ambulance' => $ambulance])->withdetails($ambulance)->withQuery($t);
+            }
+
+            return view('Member', ['ambulance' => $ambulance])->withdetails($ambulance)->withQuery($t);
+        }
+     else return redirect('/allrequests')->with('message' , 'No Details found. Try to search again !');
+       
+        }
 }

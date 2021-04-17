@@ -27,4 +27,11 @@ Route::get('/archive', [App\Http\Controllers\ArchivedController::class, 'all'])-
 Route::post('/archive/{Ambulance}', [App\Http\Controllers\ArchivedController::class, 'archive'])->middleware('auth');
 Route::delete('/archive/{Archived}', [App\Http\Controllers\ArchivedController::class, 'delete'])->middleware('auth');
 
+Route::get('/appelet', [App\Http\Controllers\AppeletController::class, 'all'])->middleware('auth');
+Route::post('/appelet/{Appelet}', [App\Http\Controllers\AppeletController::class, 'update'])->middleware('auth');
+
+Route::post('/search', [App\Http\Controllers\AmbulanceController::class, 'search'])->middleware('auth');
+Route::post('/searcharchive', [App\Http\Controllers\ArchivedController::class, 'search'])->middleware('auth');
+
+
 require __DIR__.'/auth.php';

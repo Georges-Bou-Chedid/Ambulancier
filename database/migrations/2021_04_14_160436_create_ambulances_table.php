@@ -23,6 +23,7 @@ class CreateAmbulancesTable extends Migration
             $table->string('status')->nullable();
             $table->string('Description')->nullable();
             $table->date('duedate')->nullable();
+            
             $table->timestamps();
         });
     }

@@ -32,15 +32,8 @@
                                 required autocomplete="current-password" />
             </div>
 
-                <!-- Remember Me -->
-                <div class="block mt-4">
-                <label for="remember_me" class="inline-flex items-center">
-                    <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="remember">
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-2">
+        
+            <div class="flex items-center justify-end mt-4">
 
                 <x-button class="ml-3">
                  {{ __('Log in') }}
@@ -60,10 +53,10 @@
 
                 <tbody>
                  <tr>
-                <td class="border-4 border-red-600 px-6 py-4">284</td>
-                <td class="border-4 border-red-600 px-6 py-4">285</td>
-                <td class="border-4 border-red-600 px-6 py-4">286</td>
-                <td class="border-4 border-red-600 px-6 py-4">286</td>
+                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->first}}</td>
+                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->second}}</td>
+                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->third}}</td>
+                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->fourth}}</td>
                 </tr>
                 </tbody>
 
@@ -78,8 +71,8 @@
 
         <tbody>
          <tr>
-        <td class="border-4 border-red-600 px-6 py-4">284</td>
-        <td class="border-4 border-red-600 px-6 py-4">285</td>
+        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->firstadv}}</td>
+        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->secondadv}}</td>
         </tr>
         </tbody>
 
@@ -96,8 +89,8 @@
 
         <tbody>
          <tr>
-        <td class="border-4 border-red-600 px-6 py-4">284</td>
-        <td class="border-4 border-red-600 px-6 py-4">285</td>
+        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->firstmission}}</td>
+        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->secondmission}}</td>
         </tr>
         </tbody>
 

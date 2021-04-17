@@ -8,6 +8,7 @@ use App\Models\Archived;
 use App\Models\User;
 use Auth;
 use GrahamCampbell\ResultType\Success;
+use ZipStream\Option\Archive;
 
 class ArchivedController extends Controller
 {
@@ -49,5 +50,25 @@ class ArchivedController extends Controller
 
         return redirect('/archive');   
     }
+
+    public function search(Request $request){
+
+        $validated = $request->validate([
+            'term' => 'required',
+        ]);
+
+        $t = $request->input('term');
+        $archived = Archived::where('name' , 'like' , '%'.$t.'%')->orWhere('ambname' , 'like' , '%'.$t.'%')->get();
+
+        if (count($archived) > 0) {
+            if (User::ADMIN == auth()->user()->role) {
+                return view('AdminArchived', ['archived' => $archived])->withdetails($archived)->withQuery($t);
+            }
+
+            return view('MemberArchived', ['archived' => $archived])->withdetails($archived)->withQuery($t);
+        }
+     else return redirect('/archive')->with('message' , 'No Details found. Try to search again !');
+       
+        }
     
 }
