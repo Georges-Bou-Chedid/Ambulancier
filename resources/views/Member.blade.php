@@ -2,6 +2,16 @@
 
 @section('content')
 
+<div>
+@if(session('success'))
+        <div class="alert text-green-800 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('success')}}
+        </div>
+        @endif
+</div>
+
+
 <div class="text-center">
 	<form method="GET" action="/create">
   <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
@@ -10,7 +20,8 @@
 </form> 
 </div>
 
-<div class="mt-4 ml-12 text-left">
+
+<div class="mt-4 ml-12 text-center">
    
     <form action="/search" method="POST" role="search">
     {{ csrf_field() }}

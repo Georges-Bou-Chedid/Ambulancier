@@ -30,6 +30,26 @@ class AppeletController extends Controller
             $appelet->third = '---';
         }
 
+        $appelet->five = $request->five;
+        if($request->five == "--Select--"){
+            $appelet->five = '---';
+        }
+
+        $appelet->six = $request->six;
+        if($request->six == "--Select--"){
+            $appelet->six = '---';
+        }
+
+        $appelet->seven = $request->seven;
+        if($request->seven == "--Select--"){
+            $appelet->seven = '---';
+        }
+
+        $appelet->eight = $request->eight;
+        if($request->eight == "--Select--"){
+            $appelet->eight = '---';
+        }
+
         $appelet->fourth = $request->fourth;
         if($request->fourth == "--Select--"){
             $appelet->fourth = '---';
@@ -57,6 +77,6 @@ class AppeletController extends Controller
         
         $appelet->save();
 
-        return redirect('/');
+        return redirect('/allrequests')->with('appelet' , 'Appelet Updated Successfully');
     }
 }

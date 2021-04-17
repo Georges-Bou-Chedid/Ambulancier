@@ -19,6 +19,10 @@ class CreateAppeletsTable extends Migration
             $table->string('second')->nullable();
             $table->string('third')->nullable();
             $table->string('fourth')->nullable();
+            $table->string('five')->nullable();
+            $table->string('six')->nullable();
+            $table->string('seven')->nullable();
+            $table->string('eight')->nullable();
             $table->string('firstadv')->nullable();
             $table->string('secondadv')->nullable();
             $table->string('firstmission')->nullable();

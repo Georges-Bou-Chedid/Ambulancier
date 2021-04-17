@@ -2,9 +2,20 @@
 
 @section('content')
 
-<form method="POST" action="/edit/{{$ambulance->id}}">
+<form method="POST" enctype = "multipart/form-data" action="/edit/{{$ambulance->id}}">
     @csrf
 <div class="p-6 justify-center w-full h-full">
+
+<div class="mb-6">
+@if(session('deleted'))
+        <div class="alert text-red-700 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('deleted')}}
+        </div>
+        @endif
+</div>
+
+
   <div class="flex flex-wrap -mx-3 mb-6">
 
 
@@ -292,6 +303,28 @@
     </div>
   </div>
 
+  <div class="form-group">
+    <table class="table">
+        <tr>
+            <td><label class="font-weight-bold">First Image</label></td>
+            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file" /></td>
+            
+          </tr>
+
+            <tr>
+            <td><label class="font-weight-bold">Second Image</label></td>
+            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file2" /></td>
+            
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td><span class="text-muted">jpeg, jpg, png, gif</span></td>
+            <td></td> 
+    </table>
+    </div>
+</div>
+
         </div>
     <div class="ml-6 flex items-start">
     <div class="h-12">
@@ -304,7 +337,7 @@
         </div>
  
         <div class="ml-2 mt-2 h-12">
-        <a  href="{{ url()->previous() }}" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
+        <a  href="/allrequests" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">
         Cancel
         </a>
 
@@ -313,4 +346,20 @@
 
        
         </form>
+
+        <form action="/image/{{$ambulance->id}}" method="GET">
+       <div class="text-center"> <x-button>Show Images</x-button></div>
+        </form>
+
+        <div class="grid grid-cols-2 text-center mt-4">
+        <div><form method="POST" action="/deletepic1/{{$ambulance->id}}">
+            @csrf
+              <x-button>Delete Picture 1</x-button>
+           </form>
+        </div>
+        <div><form method="POST" action="/deletepic2/{{$ambulance->id}}">
+            @csrf
+              <x-button>Delete Picture 2</x-button>
+           </form>
+        </div>
 @endsection

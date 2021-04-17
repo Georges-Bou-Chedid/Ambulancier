@@ -6,7 +6,7 @@
         ARCHIVE
 </div>
 
-<div class="mt-4 ml-12 text-left">
+<div class="mt-4 ml-12 text-center">
    
     <form action="/searcharchive" method="POST" role="search">
     {{ csrf_field() }}
@@ -91,6 +91,9 @@
 					<th class="font-semibold text-sm uppercase px-6 py-4">
                        
 					</th>
+                    <th class="font-semibold text-sm uppercase px-6 py-4">
+                       
+					</th>
 
                 </tr>
             </thead>
@@ -135,6 +138,15 @@
                     <button class="text-red-600 hover:underline">
                    Delete
                     </button>
+                </form>
+                    </td>
+
+                    <td class="px-6 py-4 text-center">
+                    <form method="GET" action="/archiveimage/{{$archiveds->id}}">
+                    @csrf
+                    <x-button>
+                   Show Images
+                    </x-button>
                 </form>
                     </td>
                 </tr>

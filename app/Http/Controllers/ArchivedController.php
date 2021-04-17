@@ -9,6 +9,8 @@ use App\Models\User;
 use Auth;
 use GrahamCampbell\ResultType\Success;
 use ZipStream\Option\Archive;
+use Illuminate\Support\Facades\File;
+
 
 class ArchivedController extends Controller
 {
@@ -36,16 +38,29 @@ class ArchivedController extends Controller
         $archived->rebhan = $ambulance->rebhan;
         $archived->Description = $ambulance->Description;
         $archived->created_at = $ambulance->created_at;
+        $archived->img = $ambulance->img;
+        $archived->img2 = $ambulance->img2;
         $archived->updated_at = NOW();
 
         $ambulance->delete();
         $archived->save();
 
-        return redirect('/')->with('success' , 'Archived Successfully');
+        return redirect('/allrequests')->with('success2' , 'Archived Successfully');
     }
 
     public function delete($id){
         $archived = Archived::find($id);
+
+        $filePath = public_path('assets/images/'.$archived->img); 
+        if(File::exists($filePath)) {
+        File::delete($filePath);
+        }
+
+        $filePath = public_path('assets/images/'.$archived->img2); 
+        if(File::exists($filePath)) {
+        File::delete($filePath);
+        }
+
         $archived->delete();
 
         return redirect('/archive');   
@@ -58,7 +73,9 @@ class ArchivedController extends Controller
         ]);
 
         $t = $request->input('term');
-        $archived = Archived::where('name' , 'like' , '%'.$t.'%')->orWhere('ambname' , 'like' , '%'.$t.'%')->get();
+        $archived = Archived::where('name' , 'like' , '%'.$t.'%')->orWhere('ambname' , 'like' , '%'.$t.'%')
+        ->orWhere('problem' , 'like' , '%'.$t.'%')->orWhere('status' , 'like' , '%'.$t.'%')->orWhere('created_at' , 'like' , '%'.$t.'%')
+        ->orWhere('rebhan' , 'like' , '%'.$t.'%')->get();
 
         if (count($archived) > 0) {
             if (User::ADMIN == auth()->user()->role) {
@@ -69,6 +86,12 @@ class ArchivedController extends Controller
         }
      else return redirect('/archive')->with('message' , 'No Details found. Try to search again !');
        
+        }
+
+        public function image($id){
+            $archived = Archived::find($id);
+            return view('imagearchiveview' , ['archived' => $archived]);
+
         }
     
 }

@@ -33,5 +33,11 @@ Route::post('/appelet/{Appelet}', [App\Http\Controllers\AppeletController::class
 Route::post('/search', [App\Http\Controllers\AmbulanceController::class, 'search'])->middleware('auth');
 Route::post('/searcharchive', [App\Http\Controllers\ArchivedController::class, 'search'])->middleware('auth');
 
+Route::get('/image/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'image'])->middleware('auth');
+Route::get('/archiveimage/{Archived}', [App\Http\Controllers\ArchivedController::class, 'image'])->middleware('auth');
+
+Route::post('/deletepic1/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'deletepic1'])->middleware('auth');
+Route::post('/deletepic2/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'deletepic2'])->middleware('auth');
+
 
 require __DIR__.'/auth.php';

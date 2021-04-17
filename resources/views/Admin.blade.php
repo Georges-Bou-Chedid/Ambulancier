@@ -2,6 +2,42 @@
 
 @section('content')
 
+<div>
+@if(session('success'))
+        <div class="alert text-green-800 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('success')}}
+        </div>
+        @endif
+</div>
+
+<div>
+@if(session('appelet'))
+        <div class="alert text-green-800 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('appelet')}}
+        </div>
+        @endif
+</div>
+
+<div>
+@if(session('success2'))
+        <div class="alert text-green-800 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('success2')}}
+        </div>
+        @endif
+</div>
+
+<div>
+@if(session('edited'))
+        <div class="alert text-green-800 text-center">
+            <span class="closebtn text-red-800" onclick="this.parentElement.style.display='none';">&times;</span>
+            {{ session('edited')}}
+        </div>
+        @endif
+</div>
+
 <div class="text-center">
 	<form method="GET" action="/appelet">
   <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
@@ -18,7 +54,7 @@
 </form> 
 </div>
 
-<div class="mt-4 ml-12 text-left">
+<div class="mt-4 ml-12 text-center">
    
     <form action="/search" method="POST" role="search">
     {{ csrf_field() }}
@@ -65,7 +101,7 @@
 
         <!-- Table -->
 		
-        <table class='table-auto mt-4 mx-auto max-w-6xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+        <table class='table-auto mt-4 mx-auto max-w-8xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
             <thead class="bg-gray-50">
                 <tr class="text-gray-600 text-left">
                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">

@@ -45,18 +45,18 @@
             <table class="table-auto m-auto">
         
                 <thead>
-                <tr><th class="border-4 border-red-600 px-6 py-4">1st Appel</th>
-                <th class="border-4 border-red-600 px-6 py-4">2nd Appel</th>
-                <th class="border-4 border-red-600 px-6 py-4">3rd Appel</th>
-                <th class="border-4 border-red-600 px-6 py-4">4th Appel</th> </tr>
+                <tr><th class="border-4 border-black px-6 py-4">1st Appel</th>
+                <th class="border-4 border-black px-6 py-4">2nd Appel</th>
+                <th class="border-4 border-black px-6 py-4">3rd Appel</th>
+                <th class="border-4 border-black px-6 py-4">4th Appel</th> </tr>
                 </thead>
 
                 <tbody>
                  <tr>
-                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->first}}</td>
-                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->second}}</td>
-                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->third}}</td>
-                <td class="border-4 border-red-600 px-6 py-4">{{$appelets->fourth}}</td>
+                <td class="border-4 border-black px-6 py-4">{{$appelets->first}}</td>
+                <td class="border-4 border-black px-6 py-4">{{$appelets->second}}</td>
+                <td class="border-4 border-black px-6 py-4">{{$appelets->third}}</td>
+                <td class="border-4 border-black px-6 py-4">{{$appelets->fourth}}</td>
                 </tr>
                 </tbody>
 
@@ -65,14 +65,34 @@
             <table class="table-auto m-auto mt-4">
         
         <thead>
-        <tr><th class="border-4 border-red-600 px-6 py-4">1st Adv Appel</th>
-        <th class="border-4 border-red-600 px-6 py-4">2st Adv Appel</th>
+        <tr><th class="border-4 border-black px-6 py-4">5th Appel</th>
+        <th class="border-4 border-black px-6 py-4">6th Appel</th>
+        <th class="border-4 border-black px-6 py-4">7th Appel</th>
+        <th class="border-4 border-black px-6 py-4">8th Appel</th> </tr>
         </thead>
 
         <tbody>
          <tr>
-        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->firstadv}}</td>
-        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->secondadv}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->five}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->six}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->seven}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->eight}}</td>
+        </tr>
+        </tbody>
+
+    </table>
+
+            <table class="table-auto m-auto mt-4">
+        
+        <thead>
+        <tr><th class="border-4 border-black px-6 py-4">1st Adv Appel</th>
+        <th class="border-4 border-black px-6 py-4">2nd Adv Appel</th>
+        </thead>
+
+        <tbody>
+         <tr>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->firstadv}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->secondadv}}</td>
         </tr>
         </tbody>
 
@@ -83,14 +103,14 @@
     <table class="table-auto m-auto mt-4">
         
         <thead>
-        <tr><th class="border-4 border-red-600 px-6 py-4">Appel Mission</th>
-        <th class="border-4 border-red-600 px-6 py-4">Appel Mission</th>
+        <tr><th class="border-4 border-black px-6 py-4">Appel Mission</th>
+        <th class="border-4 border-black px-6 py-4">Appel Mission</th>
         </thead>
 
         <tbody>
          <tr>
-        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->firstmission}}</td>
-        <td class="border-4 border-red-600 px-6 py-4">{{$appelets->secondmission}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->firstmission}}</td>
+        <td class="border-4 border-black px-6 py-4">{{$appelets->secondmission}}</td>
         </tr>
         </tbody>
 

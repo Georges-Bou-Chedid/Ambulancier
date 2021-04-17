@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="/create">
+<form method="POST" enctype = "multipart/form-data" action="/create">
     @csrf
 <div class="p-6 justify-center w-full h-full">
   <div class="flex flex-wrap -mx-3 mb-6">
@@ -291,6 +291,27 @@
       <input class="appearance-none block w-full bg-white text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="Description" type="text" placeholder="Notes">
     </div>
   </div>
+
+  <div class="field">
+
+<div class="form-group">
+    <table class="table">
+        <tr>
+            <td><label class="font-weight-bold">First Image</label></td>
+            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file" /></td>
+        </tr>
+        <tr>
+            <td><label class="font-weight-bold">Second Image</label></td>
+            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file2" /></td>
+
+        </tr>
+        <tr>
+            <td></td>
+            <td><span class="text-muted">jpeg, jpg, png, gif</span></td>
+            <td></td> 
+    </table>
+    </div>
+</div>
 
         </div>
     <div class="ml-6 flex items-start">

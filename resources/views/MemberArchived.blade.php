@@ -6,9 +6,9 @@
         Archive
 </div>
  
-<div class="mt-4 ml-12 text-left">
+<div class="mt-4 ml-12 text-center">
    
-    <form action="/search" method="POST" role="search">
+    <form action="/searcharchive" method="POST" role="search">
     {{ csrf_field() }}
     <div class="input-group">
         <input type="text" class="h-8 w-48 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"  name="term"
@@ -85,6 +85,9 @@
 					<th class="font-semibold text-sm uppercase px-6 py-4">
                        
 					</th>
+                    <th class="font-semibold text-sm uppercase px-6 py-4">
+                       
+					</th>
 
                 </tr>
             </thead>
@@ -120,6 +123,15 @@
                     </td>
                     <td class="px-6 py-4">
                         {{$archiveds->updated_at}}
+                    </td>
+
+                    <td class="px-6 py-4 text-center">
+                    <form method="GET" action="/archiveimage/{{$archiveds->id}}">
+                    @csrf
+                    <x-button>
+                   Show Images
+                    </x-button>
+                </form>
                     </td>
 		
                 </tr>
