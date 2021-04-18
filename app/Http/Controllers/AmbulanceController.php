@@ -30,7 +30,7 @@ class AmbulanceController extends Controller
     public function store(Request $request){
 
         $ambulance = new Ambulance();
-      
+
         if ($request->hasFile('file')) {
             if ($request->hasFile('file2')) {
                 $validated = $request->validate([
@@ -90,11 +90,11 @@ class AmbulanceController extends Controller
                 $image = $request->file('file');
                 $new_name = rand().'.'.$image->getClientOriginalExtension();
                 $image->move(public_path('assets/images'), $new_name);
-        
+
                 $image2 = $request->file('file2');
                 $new_name2 = rand().'.'.$image2->getClientOriginalExtension();
                 $image2->move(public_path('assets/images'), $new_name2);
-        
+
                 $ambulance->name = $request->name;
                 $ambulance->ambname = $request->ambname;
                 $ambulance->problem = $request->problem;
@@ -133,9 +133,9 @@ class AmbulanceController extends Controller
             $ambulance->save();
         }
         }
-       
+
         else{
-          
+
             $ambulance->name = $request->name;
             $ambulance->ambname = $request->ambname;
             $ambulance->problem = $request->problem;
@@ -145,7 +145,7 @@ class AmbulanceController extends Controller
             $ambulance->Description = $request->Description;
             $ambulance->duedate = $request->date;
             $ambulance->created_at = NOW();
-        
+
             $ambulance->save();
         }
         return redirect('/allrequests')->with('edited' , 'Request Added Successfuly');
@@ -239,29 +239,29 @@ class AmbulanceController extends Controller
                     'file2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
                 ]);
 
-                $filePath = public_path('assets/images/'.$ambulance->img); 
+                $filePath = public_path('assets/images/'.$ambulance->img);
                  if(File::exists($filePath)) {
                  File::delete($filePath);
              }
 
-                $filePath = public_path('assets/images/'.$ambulance->img2); 
+                $filePath = public_path('assets/images/'.$ambulance->img2);
                  if(File::exists($filePath)) {
                 File::delete($filePath);
                  }
-        
+
                 $image = $request->file('file');
                 $new_name = rand().'.'.$image->getClientOriginalExtension();
                 $image->move(public_path('assets/images'), $new_name);
-        
+
                 $image2 = $request->file('file2');
                 $new_name2 = rand().'.'.$image2->getClientOriginalExtension();
                 $image2->move(public_path('assets/images'), $new_name2);
-        
+
                 $ambulance->name = $request->name;
                 if ('--Select--' == $request->name) {
                     $ambulance->name = 'Not Specified';
                 }
-        
+
                 $ambulance->ambname = $request->ambname;
                 $ambulance->problem = $request->problem;
                 $ambulance->status = $request->status;
@@ -279,7 +279,7 @@ class AmbulanceController extends Controller
                 'file2' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
-            $filePath = public_path('assets/images/'.$ambulance->img2); 
+            $filePath = public_path('assets/images/'.$ambulance->img2);
             if(File::exists($filePath)) {
             File::delete($filePath);
             }
@@ -304,9 +304,9 @@ class AmbulanceController extends Controller
             $ambulance->save();
         }
         }
-       
+
         else{
-          
+
             $ambulance->name = $request->name;
             if ('--Select--' == $request->name) {
                 $ambulance->name = 'Not Specified';
@@ -319,7 +319,7 @@ class AmbulanceController extends Controller
             $ambulance->Description = $request->Description;
             $ambulance->duedate = $request->date;
             $ambulance->created_at = NOW();
-        
+
             $ambulance->save();
         }
         return redirect('/allrequests')->with('edited' , 'Request Edited Successfuly');
@@ -344,7 +344,7 @@ class AmbulanceController extends Controller
             return view('Member', ['ambulance' => $ambulance])->withdetails($ambulance)->withQuery($t);
         }
      else return redirect('/allrequests')->with('message' , 'No Details found. Try to search again !');
-       
+
         }
 
         public function image($id){
@@ -356,7 +356,7 @@ class AmbulanceController extends Controller
         public function deletepic1($id){
             $ambulance = Ambulance::find($id);
 
-            $filePath = public_path('assets/images/'.$ambulance->img); 
+            $filePath = public_path('assets/images/'.$ambulance->img);
             if(File::exists($filePath)) {
             File::delete($filePath);
             }
@@ -372,7 +372,7 @@ class AmbulanceController extends Controller
         public function deletepic2($id){
             $ambulance = Ambulance::find($id);
 
-            $filePath = public_path('assets/images/'.$ambulance->img2); 
+            $filePath = public_path('assets/images/'.$ambulance->img2);
             if(File::exists($filePath)) {
             File::delete($filePath);
             }
@@ -384,5 +384,23 @@ class AmbulanceController extends Controller
             $ambulance->save();
 
             return redirect('edit/'.$ambulance->id)->with('deleted' , 'Pic 2 is Deleted');
+        }
+
+        public function delete($id){
+            $ambulance = Ambulance::find($id);
+
+            $filePath = public_path('assets/images/'.$ambulance->img);
+            if(File::exists($filePath)) {
+                File::delete($filePath);
+            }
+
+            $filePath = public_path('assets/images/'.$ambulance->img2);
+            if(File::exists($filePath)) {
+                File::delete($filePath);
+            }
+
+            $ambulance->delete();
+
+            return redirect('/allrequests');
         }
 }

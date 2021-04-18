@@ -18,8 +18,7 @@ Route::get('/allrequests', [App\Http\Controllers\AmbulanceController::class, 'al
 
 Route::get('/create', [App\Http\Controllers\AmbulanceController::class, 'create'])->middleware('auth');
 Route::post('/create', [App\Http\Controllers\AmbulanceController::class, 'store'])->middleware('auth');
-
-
+Route::delete('/delete/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'delete'])->middleware('auth');
 Route::get('/edit/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'edit'])->middleware('auth');
 Route::post('/edit/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'update'])->middleware('auth');
 

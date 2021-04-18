@@ -43,7 +43,7 @@
   <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
   Go To Appelet
     </button>
-</form> 
+</form>
 </div>
 
 	<div class="text-center">
@@ -51,16 +51,16 @@
   <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
   Add Request +
     </button>
-</form> 
+</form>
 </div>
 
 <div class="mt-4 ml-12 text-center">
-   
+
     <form action="/search" method="POST" role="search">
     {{ csrf_field() }}
     <div class="input-group">
         <input type="text" class="h-8 w-48 pr-8 pl-5 rounded z-0 focus:shadow focus:outline-none"  name="term"
-            placeholder="Search anything...""> 
+            placeholder="Search anything..."">
 
             @if(isset($details))
 
@@ -92,15 +92,15 @@
 </form>
 </div>
 
- 
+
    <!-- This is an example component -->
 <div class="flex items-center px-4">
     <div class='overflow-x-auto w-full'>
 
-   
+
 
         <!-- Table -->
-		
+
         <table class='table-auto mt-4 mx-auto max-w-8xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
             <thead class="bg-gray-50">
                 <tr class="text-gray-600 text-left">
@@ -132,25 +132,28 @@
                         ~Due Date
 					</th>
 					<th class="font-semibold text-sm uppercase px-6 py-4">
-                       
+
 					</th>
 					<th class="font-semibold text-sm uppercase px-6 py-4">
-                       
+
 					</th>
+                    <th class="font-semibold text-sm uppercase px-6 py-4">
+
+                    </th>
 
                 </tr>
             </thead>
-			
+
             <tbody class="divide-y divide-gray-200">
-               
+
 			@foreach($ambulance as $ambulances)
                 <tr>
                     <td class="px-6 py-4 text-center">
-                     
+
                          {{$ambulances->ambname}}
                     </td>
                     <td class="px-6 py-4 text-center">
-                     
+
                      {{$ambulances->KM}}
                 </td>
                     <td class="px-6 py-4">
@@ -166,7 +169,7 @@
 					{{$ambulances->status}}
                     </td>
                     <td class="px-6 py-4 text-center">
-                     
+
                      {{$ambulances->rebhan}}
                 </td>
 					<td class="px-6 py-4">
@@ -178,6 +181,17 @@
                     <td class="px-6 py-4 text-center">
                         <a href="/edit/{{$ambulances->id}}" class="text-red-600 hover:underline">Edit</a>
                     </td>
+
+                    <td class="px-6 py-4 text-center">
+                        <form method="post" action="/delete/{{$ambulances->id}}">
+                            @method('DELETE')
+                            @csrf
+                            <button class="text-red-600 hover:underline">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+
 					<td class="px-6 py-4 text-center">
                     <form method="post" action="/archive/{{$ambulances->id}}">
                     @csrf
@@ -188,7 +202,7 @@
                     </td>
                 </tr>
 				@endforeach
-               
+
             </tbody>
         </table>
 
@@ -196,8 +210,8 @@
 </div>
 
 
-       
+
 @endsection
 
-   
+
 
