@@ -66,7 +66,7 @@
    
         <!-- Table -->
 		
-        <table class='mt-6 mx-auto max-w-6xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+        <table class='mt-6 mx-auto max-w-8xl w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
             <thead class="bg-gray-50">
                 <tr class="text-gray-600 text-left">
                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
