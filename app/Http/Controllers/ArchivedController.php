@@ -16,7 +16,7 @@ class ArchivedController extends Controller
 {
     public function all()
     {
-        $archived = Archived::orderBy('updated_at', 'asc')->get();;
+        $archived = Archived::orderBy('updated_at', 'asc')->get();
 
         if (User::ADMIN == auth()->user()->role) {
             return view('AdminArchived', ['archived' => $archived]);

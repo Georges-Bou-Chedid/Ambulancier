@@ -147,6 +147,7 @@
             <tbody class="divide-y divide-gray-200">
 
 			@foreach($ambulance as $ambulances)
+           
                 <tr>
                     <td class="px-6 py-4 text-center">
 
@@ -175,7 +176,7 @@
 					<td class="px-6 py-4">
                         {{$ambulances->created_at}}
                     </td>
-					<td class="px-6 py-4">
+					<td class="px-6 py-4" @foreach ($ambulance1 as $ambulances1) @if($ambulances->id == $ambulances1->id) style="color:red" @endif @endforeach>
 						{{$ambulances->duedate}}
                     </td>
                     <td class="px-6 py-4 text-center">

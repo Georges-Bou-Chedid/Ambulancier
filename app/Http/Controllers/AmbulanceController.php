@@ -9,6 +9,7 @@ use Auth;
 use Illuminate\Support\Facades\Input;
 use App\Models\Term;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Carbon;
 
 
 class AmbulanceController extends Controller
@@ -16,10 +17,12 @@ class AmbulanceController extends Controller
     public function all(){
         $users = User::all();
         $ambulance = Ambulance::orderBy('duedate', 'asc')->get();
+        $ambulance1 = Ambulance::where('duedate', '<', Carbon::now()->toDateString())->get();
+
         if(auth()->user()->role == User::ADMIN){
-            return view('Admin' , ['users' => $users , 'ambulance' => $ambulance]);
+            return view('Admin' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1]);
         }
-        return view('Member' , ['users' => $users , 'ambulance' => $ambulance]);
+        return view('Member' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1]);
     }
 
     public function create(){
@@ -155,7 +158,8 @@ class AmbulanceController extends Controller
     public function edit($id){
         $users = User::all();
         $ambulance = Ambulance::find($id);
-        return view ('editambulance' , ['ambulance' => $ambulance , 'users' => $users]);
+        $users1 = User::where('name' , $ambulance->name)->first();
+        return view ('editambulance' , ['ambulance' => $ambulance , 'users' => $users , 'users1' => $users1]);
     }
 
     public function update(Request $request , $id){
