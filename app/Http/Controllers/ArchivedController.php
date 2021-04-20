@@ -51,12 +51,12 @@ class ArchivedController extends Controller
     public function delete($id){
         $archived = Archived::find($id);
 
-        $filePath = public_path('assets/images/'.$archived->img); 
+        $filePath = public_path('storage/'.$archived->img); 
         if(File::exists($filePath)) {
         File::delete($filePath);
         }
 
-        $filePath = public_path('assets/images/'.$archived->img2); 
+        $filePath = public_path('storage/'.$archived->img2); 
         if(File::exists($filePath)) {
         File::delete($filePath);
         }
