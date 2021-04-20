@@ -340,12 +340,14 @@ class AmbulanceController extends Controller
         ->orWhere('problem' , 'like' , '%'.$t.'%')->orWhere('status' , 'like' , '%'.$t.'%')->orWhere('created_at' , 'like' , '%'.$t.'%')
         ->orWhere('rebhan' , 'like' , '%'.$t.'%')->get();
 
+        $ambulance1 = Ambulance::where('duedate', '<', Carbon::now()->toDateString())->get();
+
         if (count($ambulance) > 0) {
             if (User::ADMIN == auth()->user()->role) {
-                return view('Admin', ['ambulance' => $ambulance])->withdetails($ambulance)->withQuery($t);
+                return view('Admin', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1])->withdetails($ambulance)->withQuery($t);
             }
 
-            return view('Member', ['ambulance' => $ambulance])->withdetails($ambulance)->withQuery($t);
+            return view('Member', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1])->withdetails($ambulance)->withQuery($t);
         }
      else return redirect('/allrequests')->with('message' , 'No Details found. Try to search again !');
 
