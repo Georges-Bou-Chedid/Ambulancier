@@ -8,11 +8,11 @@
 
 <div class="grid grid-cols-2 img mt-4 ml-2">
 <div>
-<h2><img src="{{ url('storage/'.$archived->img2) }}" style="width:400px;height:400px;"  alt="Not Uploaded"></h2>
+<h2><img src="{{ asset('storage/'.$archived->img2) }}" style="width:400px;height:400px;"  alt="Not Uploaded"></h2>
 </div>
 
 <div class="mt-4 ml-4" >
-<h2><img src="{{ url('storage/'.$archived->img2) }}" style="width:400px;height:400px;"  alt="Not Uploaded"></h2>
+<h2><img src="{{ asset('storage/'.$archived->img2) }}" style="width:400px;height:400px;"  alt="Not Uploaded"></h2>
 </div>
 
 <div class="ml-2 mt-8 h-12">
