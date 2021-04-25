@@ -11,6 +11,35 @@
         @endif
 </div>
 
+<div class="grid grid-cols-3">
+<div>
+        <p class="text-center text-2xl mt-4 font-bold">Touw2ifet</p>
+
+            
+            <tr><table class="border-separate border border-green-800 mt-2 m-auto">
+            <tr><th class="border border-green-800">Name</th>
+                <th class="border border-green-800">From</th>
+                 <th class="border border-green-800">To</th>
+
+                
+            @foreach($akal as $akals)
+               
+                 <tr><td class="text-center border border-green-800">
+                 {{$akals->name}}
+                </td> 
+
+
+                <td class="border border-green-800">
+                    {{$akals->from}}</td>
+
+                 <td class="border border-green-800">
+                     {{$akals->to}}
+                </td>
+            
+                @endforeach
+                </table>
+
+</div>
 
 <div class="text-center">
 	<form method="GET" action="/create">
@@ -18,6 +47,8 @@
   Add Request +
     </button>
 </form> 
+</div>
+
 </div>
 
 
@@ -88,6 +119,9 @@
                         status
                     </th>
                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                        Approved
+                    </th>
+                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
                         Rebhan
                     </th>
 					<th class="font-semibold text-sm uppercase px-6 py-4">
@@ -129,6 +163,11 @@
 					<td class="px-6 py-4">
 					{{$ambulances->status}}
                     </td>
+
+                    <td class="px-6 py-4 text-center">
+                    @if($ambulances->approved == true) <i class="fas fa-check-circle"></i>  @else <i class="fas fa-times-circle"></i> @endif
+                    </td>
+
                     <td class="px-6 py-4 text-center">
                      {{$ambulances->rebhan}}
                 </td>

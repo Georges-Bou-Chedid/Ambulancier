@@ -38,12 +38,55 @@
         @endif
 </div>
 
+<div class="grid grid-cols-3">
+<div>
+        <p class="text-center text-2xl mt-4 font-bold">Touw2ifet</p>
+
+            <form action="/addtouw2ifet" method="POST">
+                 @csrf
+            <tr><table class="border-separate border border-green-800 mt-2 m-auto">
+            <tr><th class="border border-green-800">Name</th>
+                <th class="border border-green-800">From</th>
+                 <th class="border border-green-800">To</th>
+                <th style="text-align:center"><button class="btn btn-success" type="submit"><i class="fas fa-plus"></i></button></td></tr>
+            </form>
+
+                
+            @foreach($akal as $akals)
+                <form action="/savetouw2ifet/{{$akals->id}}" method="POST">
+                 @csrf
+                 @method('PUT')
+
+                 <tr><td class="text-center">
+                 <input id="type" class="ml-2 mr-2" value="{{$akals->name}}" style="height:30px ; width:120px" name="name">
+                </td> 
+
+
+                <td class="border border-green-800"> <input type ="date" value="{{$akals->from}}" name="date1">
+
+                 <td class="border border-green-800"> <input type ="date" value="{{$akals->to}}"  name="date2">
+              
+                 <td><button  class="ml-2 " type="submit"><i class="far fa-save icon1"></i></button></td>
+                 </form>
+
+                 <form action="/deletetouw2ifet/{{$akals->id}}" method="POST">
+                 @csrf
+                 @method('DELETE')
+                 <td><button  class="ml-2" type="submit"><i class="fas fa-trash icon" style="text-align:center"></i></button></td></tr>
+                </form>
+                @endforeach
+                </table>
+
+</div>
+
 <div class="text-center">
 	<form method="GET" action="/appelet">
   <button class="mt-6 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
   Go To Appelet
     </button>
 </form>
+</div>
+
 </div>
 
 	<div class="text-center">
@@ -53,6 +96,8 @@
     </button>
 </form>
 </div>
+
+
 
 <div class="mt-4 ml-12 text-center">
 
@@ -123,8 +168,13 @@
                         status
                     </th>
                     <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
+                        Approved
+                    </th>
+
+                    <th class="font-semibold text-sm uppercase px-6 py-4 text-center">
                         Rebhan
                     </th>
+                   
 					<th class="font-semibold text-sm uppercase px-6 py-4">
                         Created_at
 					</th>
@@ -169,10 +219,21 @@
 					<td class="px-6 py-4">
 					{{$ambulances->status}}
                     </td>
+
+                    <td class="px-6 py-4 text-center">
+                    <form action ="/approved/{{$ambulances->id}}" method="POST">
+                    @csrf
+                    <input type="checkbox" name ="approved" onClick="this.form.submit()" @if ($ambulances->approved == true) checked @endif>
+                    </form>
+                    </td>
+                   
+
                     <td class="px-6 py-4 text-center">
 
                      {{$ambulances->rebhan}}
                 </td>
+
+              
 					<td class="px-6 py-4">
                         {{$ambulances->created_at}}
                     </td>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Akal;
 use Illuminate\Http\Request;
 use App\Models\Ambulance;
 use App\Models\User;
@@ -19,10 +20,12 @@ class AmbulanceController extends Controller
         $ambulance = Ambulance::orderBy('duedate', 'asc')->get();
         $ambulance1 = Ambulance::where('duedate', '<', Carbon::now()->toDateString())->get();
 
+        $akal = Akal::all();
+
         if(auth()->user()->role == User::ADMIN){
-            return view('Admin' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1]);
+            return view('Admin' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1 , 'akal' => $akal]);
         }
-        return view('Member' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1]);
+        return view('Member' , ['users' => $users , 'ambulance' => $ambulance , 'ambulance1' => $ambulance1 , 'akal' => $akal]);
     }
 
     public function create(){
@@ -132,6 +135,7 @@ class AmbulanceController extends Controller
             $ambulance->problem = $request->problem;
             $ambulance->status = $request->status;
             $ambulance->KM = $request->KM;
+            $ambulance->approved = false;
             $ambulance->rebhan = $request->rebhan;
             $ambulance->Description = $request->Description;
             $ambulance->duedate = $request->date;
@@ -328,6 +332,69 @@ class AmbulanceController extends Controller
      else return redirect('/allrequests')->with('message' , 'No Details found. Try to search again !');
 
         }
+
+        public function approved(Request $request , $id) {
+            $ambulance = Ambulance::find($id);
+
+            if($ambulance->approved == false){
+                $ambulance->approved = true;
+                $ambulance->save();
+                return redirect()->back();
+            }
+                $ambulance->approved = false;
+                $ambulance->save();
+                return redirect()->back();
+        }
+
+
+        public function addtouw2ifet(Request $request){
+
+            $akal = new Akal();
+
+            $akal->name = $request->name;
+            $akal->from = $request->date1;
+            $akal->to = $request->date2;
+
+            $akal->save();
+
+            return redirect()->back();
+        }
+
+        public function savetouw2ifet (Request $request , $id){
+            $akal = Akal::find($id);
+
+            $akal->name = $request->name;
+            $akal->from = $request->date1;
+            $akal->to = $request->date2;
+
+            $akal->save();
+            return redirect()->back();
+        }
+
+        public function deletetouw2ifet (Request $request , $id){
+            $akal = Akal::find($id);
+
+            $akal->delete();
+
+            return redirect()->back();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public function image($id){
             $ambulance = Ambulance::find($id);

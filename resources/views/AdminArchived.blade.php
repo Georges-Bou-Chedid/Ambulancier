@@ -141,14 +141,7 @@
                 </form>
                     </td>
 
-                    <td class="px-6 py-4 text-center">
-                    <form method="GET" action="/archiveimage/{{$archiveds->id}}">
-                    @csrf
-                    <x-button>
-                   Show Images
-                    </x-button>
-                </form>
-                    </td>
+                    
                 </tr>
 				@endforeach
                

@@ -32,6 +32,12 @@ Route::post('/appelet/{Appelet}', [App\Http\Controllers\AppeletController::class
 Route::post('/search', [App\Http\Controllers\AmbulanceController::class, 'search'])->middleware('auth');
 Route::post('/searcharchive', [App\Http\Controllers\ArchivedController::class, 'search'])->middleware('auth');
 
+Route::post('/approved/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'approved'])->middleware('auth');
+
+Route::post('/addtouw2ifet', [App\Http\Controllers\AmbulanceController::class, 'addtouw2ifet'])->middleware('auth');
+Route::put('/savetouw2ifet/{Akal}', [App\Http\Controllers\AmbulanceController::class, 'savetouw2ifet'])->middleware('auth');
+Route::delete('/deletetouw2ifet/{Akal}', [App\Http\Controllers\AmbulanceController::class, 'deletetouw2ifet'])->middleware('auth');
+
 Route::get('/image/{Ambulance}', [App\Http\Controllers\AmbulanceController::class, 'image'])->middleware('auth');
 Route::get('/archiveimage/{Archived}', [App\Http\Controllers\ArchivedController::class, 'image'])->middleware('auth');
 

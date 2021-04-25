@@ -91,7 +91,8 @@
         <option {{ ($ambulance->status) == 'In Process' ? 'selected' : '' }}>In Process</option>
           <option {{ ($ambulance->status) == 'At Garage' ? 'selected' : '' }}>At Garage</option>
           <option {{ ($ambulance->status) == 'Done' ? 'selected' : '' }}>Done</option>
-          <option {{ ($ambulance->status) == 'Requesting' ? 'selected' : '' }}>Requesting</option>
+          <option {{ ($ambulance->status) == '204 Request' ? 'selected' : '' }}>204 Request</option>
+          <option {{ ($ambulance->status) == 'Idara Request' ? 'selected' : '' }}>Idara Request</option>
         </select>
         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
           <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
@@ -139,26 +140,7 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <table class="table">
-        <tr>
-            <td><label class="font-weight-bold">First Image</label></td>
-            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file" /></td>
-            
-          </tr>
-
-            <tr>
-            <td><label class="font-weight-bold">Second Image</label></td>
-            <td><input class="@error('file') is-invalid @enderror" type = "file" name="file2" /></td>
-            
-            
-        </tr>
-        <tr>
-            <td></td>
-            <td><span class="text-muted">jpeg, jpg, png, gif</span></td>
-            <td></td> 
-    </table>
-    </div>
+ 
 </div>
 
         </div>
@@ -180,22 +162,4 @@
         </div>
         </div>
 
-       
-        </form>
-
-        <form action="/image/{{$ambulance->id}}" method="GET">
-       <div class="text-center"> <x-button>Show Images</x-button></div>
-        </form>
-
-        <div class="grid grid-cols-2 text-center mt-4">
-        <div><form method="POST" action="/deletepic1/{{$ambulance->id}}">
-            @csrf
-              <x-button>Delete Picture 1</x-button>
-           </form>
-        </div>
-        <div><form method="POST" action="/deletepic2/{{$ambulance->id}}">
-            @csrf
-              <x-button>Delete Picture 2</x-button>
-           </form>
-        </div>
 @endsection
