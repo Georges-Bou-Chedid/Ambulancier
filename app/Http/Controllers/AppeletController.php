@@ -66,12 +66,12 @@ class AppeletController extends Controller
         }
 
         $appelet->firstmission = $request->firstmission;
-        if($request->firstmission == "--Select--"){
+        if($request->firstmission == NULL){
             $appelet->firstmission = '---';
         }
 
         $appelet->secondmission = $request->secondmission;
-        if($request->secondmission == "--Select--"){
+        if($request->secondmission == NULL){
             $appelet->secondmission = '---';
         }
         

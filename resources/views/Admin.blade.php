@@ -44,7 +44,7 @@
 
             <form action="/addtouw2ifet" method="POST">
                  @csrf
-            <tr><table class="border-separate border border-green-800 mt-6 m-auto table">
+            <tr><table class="border-separate border border-green-800 mt-6 m-auto table-auto">
             <tr><th class="border border-green-800">Name</th>
                 <th class="border border-green-800">From</th>
                  <th class="border border-green-800">To</th>

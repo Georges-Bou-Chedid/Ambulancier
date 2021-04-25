@@ -104,7 +104,7 @@
         
         <thead>
         <tr><th class="border-4 border-black px-6 py-4">Appel Mission</th>
-        <th class="border-4 border-black px-6 py-4">Appel Mission</th>
+        <th class="border-4 border-black px-6 py-4">Appel Post</th>
         </thead>
 
         <tbody>
