@@ -321,13 +321,14 @@ class AmbulanceController extends Controller
         ->orWhere('rebhan' , 'like' , '%'.$t.'%')->get();
 
         $ambulance1 = Ambulance::where('duedate', '<', Carbon::now()->toDateString())->get();
+        $akal = Akal::all();
 
         if (count($ambulance) > 0) {
             if (User::ADMIN == auth()->user()->role) {
-                return view('Admin', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1])->withdetails($ambulance)->withQuery($t);
+                return view('Admin', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1 , 'akal' => $akal])->withdetails($ambulance)->withQuery($t);
             }
 
-            return view('Member', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1])->withdetails($ambulance)->withQuery($t);
+            return view('Member', ['ambulance' => $ambulance , 'ambulance1' => $ambulance1 , 'akal' => $akal])->withdetails($ambulance)->withQuery($t);
         }
      else return redirect('/allrequests')->with('message' , 'No Details found. Try to search again !');
 

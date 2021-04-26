@@ -58,13 +58,13 @@
                  @method('PUT')
 
                  <tr><td class="text-center">
-                 <input id="type" class="ml-2 mr-2" value="{{$akals->name}}" name="name">
+                 <input id="type" class="ml-2 mr-2" value="{{$akals->name}}" style="height:30px ; width:100px" name="name">
                 </td> 
 
 
-                <td class="border border-green-800"> <input type ="date" value="{{$akals->from}}" name="date1">
+                <td class="border border-green-800"> <input style="height:30px ; width:100px" type ="date" value="{{$akals->from}}" name="date1">
 
-                 <td class="border border-green-800"> <input type ="date" value="{{$akals->to}}"  name="date2">
+                 <td class="border border-green-800"> <input style="height:30px ; width:100px" type ="date" value="{{$akals->to}}"  name="date2">
               
                  <td><button  class="ml-2 " type="submit"><i class="far fa-save icon1"></i></button></td>
                  </form>
