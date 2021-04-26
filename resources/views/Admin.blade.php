@@ -58,7 +58,7 @@
                  @method('PUT')
 
                  <tr><td class="text-center">
-                 <input id="type" class="ml-2 mr-2" value="{{$akals->name}}" style="height:30px ; width:120px" name="name">
+                 <input id="type" class="ml-2 mr-2" value="{{$akals->name}}" name="name">
                 </td> 
 
 
